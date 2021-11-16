@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: statistics_app
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - .:/app/
+    ports:
+      - "8000:8000"
+  db:
+    image: postgres:13.0-alpine
+    container_name: statistics_db
+    env_file:
+      - .env
+    volumes:
+      - pg_data:/var/lib/postgresql
+    restart: always
+    ports:
+      - "5431:5432"
+
+volumes:
+  pg_data:
