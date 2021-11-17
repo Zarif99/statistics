@@ -1,9 +1,10 @@
 from decimal import Decimal
 from random import randint
 from datetime import date
-from django.core.management.base import BaseCommand
+from django.core.management.base import BaseCommand, CommandError
 from statistic.models import Statistic
 from statistic.utils import get_random_date
+from django.db.transaction import atomic
 
 
 class Command(BaseCommand):
@@ -17,6 +18,7 @@ class Command(BaseCommand):
             help='Generate count statistic'
         )
 
+    @atomic
     def handle(self, *args, **options):
         count = options['count']
         i = 0
