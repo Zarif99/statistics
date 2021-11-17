@@ -12,6 +12,7 @@ Create `.env` file and fill it with the help of `.env.example`
 
 1. Run docker in your computer
 2. Run project inside project directory ```./rebuilddocker.sh```
+3. Generate random statistics: `docker exec -i statistics_app sh -c "python manage.py generate_statistics 10000"`
 4. Swagger UI `http://0.0.0.0:8000/swagger/`
 5. Redoc UI `http://0.0.0.0:8000/redoc/`
 
